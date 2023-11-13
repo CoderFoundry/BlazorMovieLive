@@ -3,30 +3,41 @@
 @using BlazorMovieLive.Services
 @inject TMDBClient TMDB
 
-<PageTitle>Home</PageTitle>
+<PageTitle>Blazor Movie: Popular Movies</PageTitle>
 
-<div class="h-100 d-flex flex-column justify-content-center align-items-center">
-
-    <h1>Hello, world!</h1>
-    Welcome to your new app.
-
-    <img src="/images/THEMOVEDBLogo.svg" class="w-25" />
-
-    <button class="btn btn-primary mt-3">Primary Button</button>
-
-    @if(movies is not null)
-    {
-        <ul>
-            @foreach (PopularMovie movie in movies.Results)
+<div class="container-xxl py-3">
+    <div>
+        <h1 class="display-6">
+            <span class="text-danger">
+                <i class="bi bi-fire"></i>
+            </span>
+            Popular Movies
+        </h1>
+    </div>
+    <div class="d-flex flex-column flex-md-row justify-content-between my-3">
+        
+        <div class="row row-cols-2 row-cols-lg-4 row-cols-xl-5 g-3 justify-content-center justify-content-md-start">
+        @if (movies is not null)
+        {
+                @foreach (PopularMovie movie in movies.Results)
+                {
+                    <div class="col">
+                        <MovieCard Movie="movie"/>
+                    </div>
+                }
+        }
+        else
+        {
+            for (int i=0; i < 10; i++)
             {
-                <li>@movie.Title</li>
+                <div class="col">
+                    <MovieCard />
+                </div>
             }
-        </ul>
-    }
-    else
-    {
-        <p>Movies are still loading...</p>
-    }
+        }
+        </div>
+       
+    </div>
 </div>
 
 @code {
