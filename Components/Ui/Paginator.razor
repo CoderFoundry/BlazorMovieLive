@@ -1,0 +1,42 @@
+﻿<div class="d-flex align-items-center justify-content-center gap-3">
+    <button class="btn btn-primary rounded-pill" disabled="@(CurrentPage <= 1)" @onclick="PrevPage">
+        <i class="bi bi-arrow-left"></i>
+    </button>
+
+    <span>Page @CurrentPage of @TotalPages</span>
+
+    <button class="btn btn-primary rounded-pill" disabled="@(CurrentPage >= TotalPages)" @onclick="NextPage">
+        <i class="bi bi-arrow-right"></i>
+    </button>
+</div>
+
+@code {
+    [Parameter]
+    [EditorRequired]
+    public int CurrentPage { get; set; }
+
+    [Parameter]
+    [EditorRequired]
+    public int TotalPages { get; set; }
+
+    [Parameter]
+    public EventCallback<int> OnPageChange { get; set; }
+
+    private async Task NextPage()
+    {
+        if (CurrentPage < TotalPages)
+        {
+            CurrentPage++;
+            await OnPageChange.InvokeAsync(CurrentPage);
+        }
+    }
+
+    private async Task PrevPage()
+    {
+        if (CurrentPage > 1)
+        {
+            CurrentPage--;
+            await OnPageChange.InvokeAsync(CurrentPage);
+        }
+    }
+}
