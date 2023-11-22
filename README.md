@@ -1,7 +1,5 @@
 # BlazorMovie Live
 
-Watch the code long on youtube.
+## Code along with us on Youtube!
 
-<img src="https://i.ytimg.com/vi/5NDIqqw7HrE/maxresdefault.jpg" width="50%">]
-(https://www.youtube.com/watch?v=5NDIqqw7HrE "Code Along with us on Youtube!")
-
+[![Watch the video](https://img.youtube.com/vi/5NDIqqw7HrE/maxresdefault.jpg)](https://youtu.be/5NDIqqw7HrE)
